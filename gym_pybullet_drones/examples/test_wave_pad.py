@@ -40,7 +40,9 @@ if __name__ == "__main__":
     for _ in range(20000):
         action = get_hover_action(env)
         obs, reward, terminated, truncated, info = env.step(action)
-
+        if _ % 120 == 0:
+            print("pad center:", info["pad_top_center_world"])
+            print("pad rpy:", info["pad_rpy_world"])
         # Slow down to real-time so you can see the motion
         time.sleep(env.CTRL_TIMESTEP)
 
